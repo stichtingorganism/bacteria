@@ -1,1 +1,3 @@
-# bacteria
+# Bacteria
+
+Strobe + Transcript Protocol
