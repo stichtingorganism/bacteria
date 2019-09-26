@@ -58,6 +58,9 @@ pub(crate) fn encode_usize_as_u32(x: usize) -> [u8; 4] {
 /// passes a `&mut` reference to the verifier's transcript to the
 /// verification function.
 ///
+/// Extends Merlin transcript API that allows committing scalars and points and
+/// generating challenges as scalars.
+///
 #[derive(Clone)]
 pub struct Transcript {
     pub(crate) strobe: Strobe128,
@@ -131,21 +134,26 @@ impl Transcript {
     }
 
     /// Compute a `label`ed challenge variable.
-    fn challenge_scalar(&mut self, label: &'static [u8]) -> Scalar {
+    pub fn challenge_scalar(&mut self, label: &'static [u8]) -> Scalar {
         let mut buf = [0u8; 64];
         self.challenge_bytes(label, &mut buf);
         Scalar::from_bytes_mod_order_wide(&buf)
     }
 
     /// Commit a `scalar` with the given `label`.
-    fn commit_scalar(&mut self, label: &'static [u8], scalar: &Scalar) {
+    pub fn commit_scalar(&mut self, label: &'static [u8], scalar: &Scalar) {
         self.append_message(label, scalar.as_bytes());
     }
     
     /// Commit a `point` with the given `label`.
-    fn commit_point(&mut self, label: &'static [u8], point: &CompressedRistretto) {
+    pub fn commit_point(&mut self, label: &'static [u8], point: &CompressedRistretto) {
         self.append_message(label, point.as_bytes());
     }
+
+    // /// Extend transcript with a protocol name
+    // fn proto_name(&mut self, label: &'static [u8]) {
+    //     self.append_message(b"proto-name", label);
+    // }
 
 }
 
