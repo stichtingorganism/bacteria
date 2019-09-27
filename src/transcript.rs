@@ -150,10 +150,11 @@ impl Transcript {
         self.append_message(label, point.as_bytes());
     }
 
-    // /// Extend transcript with a protocol name
-    // fn proto_name(&mut self, label: &'static [u8]) {
-    //     self.append_message(b"proto-name", label);
-    // }
+    /// Extend transcript with a protocol name
+    pub fn proto_name(&mut self, label: &'static [u8]) {
+        self.append_message(b"proto-name", label);
+    }
+    
 
 }
 

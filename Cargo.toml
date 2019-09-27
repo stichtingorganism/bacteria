@@ -1,6 +1,6 @@
 [package]
 name = "bacteria"
-version = "0.0.3"
+version = "0.0.4"
 authors = ["hello@organism.org"]
 description = "Bacteria: Strobe & Transcript Protocol"
 license = "Apache-2.0"
