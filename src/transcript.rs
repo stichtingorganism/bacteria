@@ -63,7 +63,7 @@ pub(crate) fn encode_usize_as_u32(x: usize) -> [u8; 4] {
 ///
 #[derive(Clone)]
 pub struct Transcript {
-    pub(crate) strobe: Strobe128,
+    pub strobe: Strobe128,
 }
 
 impl Transcript {
