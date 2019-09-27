@@ -9,8 +9,8 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-mohan = "0.0.21"
-zeroize = "0.10"
+mohan = "0.0.*"
+zeroize = { version = "0.10.*", features = ["zeroize_derive"] }
 rand = "0.6"
 subtle = "2"
 rand_core = { version = "0.4", default-features = false }
