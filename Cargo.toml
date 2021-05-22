@@ -1,6 +1,6 @@
 [package]
 name = "bacteria"
-version = "0.0.8"
+version = "0.0.9"
 authors = ["hello@organism.org"]
 description = "Bacteria: Strobe & Transcript Protocol"
 license = "Apache-2.0"
@@ -8,15 +8,22 @@ edition = "2018"
 
 
 [dependencies]
-mohan = "0.0.*"
-zeroize = { version = "1.0.0-pre", features = ["zeroize_derive"] }
-rand = "0.7.*"
+zeroize = { version = "1", features = ["zeroize_derive"] }
+rand = "0.8"
 subtle = "2"
-rand_core = { version = "0.5.1" }
+rand_core = "0.6"
+byteorder = "1"
+
+[target.'cfg(any(target_feature = "avx2", target_feature = "avx"))'.dependencies]
+curve25519-dalek = { version = "4.0.0-pre.0", default-features = false, features = ["simd_backend", "nightly", "serde"] }
+
+[target.'cfg(not(any(target_feature = "avx2", target_feature = "avx")))'.dependencies]
+curve25519-dalek = { version = "4.0.0-pre.0", default-features = false, features = ["nightly", "u64_backend", "serde"] }
+
 
 [dev-dependencies]
 serde = "1.0"
 serde_derive = "1.0"
 serde_json = "1.0"
-rand_chacha = "0.2"
-hex = "0.3"
+rand_chacha = "0.3"
+hex = "0.4"

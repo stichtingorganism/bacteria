@@ -1,4 +1,4 @@
-// Copyright 2019 Stichting Organism
+// Copyright 2021 Stichting Organism
 // Copyright 2018 Michael Rosenberg
 // Copyright 2018 Henry de Valence.
 //
@@ -24,6 +24,7 @@
 /// Domain separation label to initialize the STROBE context.
 pub const BACTERIA_PROTOCOL_LABEL: &[u8] = b"BACTERIAv0.0.1";
 
+pub mod sponge;
 
 pub(crate) mod internal;
 mod strobe;

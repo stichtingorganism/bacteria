@@ -1,4 +1,4 @@
-// Copyright 2019 Stichting Organism
+// Copyright 2021 Stichting Organism
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #[cfg(not(target_endian = "little"))]
-use mohan::byteorder::{ByteOrder, LittleEndian};
+use byteorder::{ByteOrder, LittleEndian};
 use zeroize::Zeroize;
 use std::ops::{Deref, DerefMut};
 
@@ -34,7 +34,7 @@ pub(crate) struct AlignedKeccakState(pub(crate) [u8; 8 * SPONGE_BLOCK_SIZE]);
 pub(crate) fn keccakf_u8(st: &mut AlignedKeccakState) {
     unsafe {
         let mut transmuted_block: &mut [u64; SPONGE_BLOCK_SIZE] = core::mem::transmute(&mut st.0);
-        mohan::sponge::f1600(&mut transmuted_block);
+        crate::sponge::f1600(&mut transmuted_block);
     }
 }
 

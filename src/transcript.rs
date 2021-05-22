@@ -1,4 +1,4 @@
-// Copyright 2019 Stichting Organism
+// Copyright 2021 Stichting Organism
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,9 +16,9 @@ use crate::{
     BACTERIA_PROTOCOL_LABEL,
     Strobe128
 };
-use mohan::dalek::scalar::Scalar;
-use mohan::dalek::ristretto::CompressedRistretto;
-use mohan::byteorder::{ByteOrder, LittleEndian};
+use curve25519_dalek::scalar::Scalar;
+use curve25519_dalek::ristretto::CompressedRistretto;
+use byteorder::{ByteOrder, LittleEndian};
 
 pub(crate) fn encode_u64(x: u64) -> [u8; 8] {
     let mut buf = [0; 8];
