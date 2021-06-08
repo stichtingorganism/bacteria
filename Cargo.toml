@@ -15,10 +15,10 @@ rand_core = "0.6"
 byteorder = "1"
 
 [target.'cfg(any(target_feature = "avx2", target_feature = "avx"))'.dependencies]
-curve25519-dalek = { package = "curve25519-dalek-ng", git = "https://github.com/stichtingorganism/curve25519-dalek-ng", version = "4", default-features = false, features = ["simd_backend", "nightly", "serde"] }
+curve25519-dalek = { package = "curve25519-dalek-ng", git = "https://github.com/stichtingorganism/curve25519-dalek-ng", version = "4", default-features = false, features = ["simd_backend", "nightly", "serde", "alloc"] }
 
 [target.'cfg(not(any(target_feature = "avx2", target_feature = "avx")))'.dependencies]
-curve25519-dalek = { package = "curve25519-dalek-ng",  git = "https://github.com/stichtingorganism/curve25519-dalek-ng", version = "4", default-features = false, features = ["nightly", "u64_backend", "serde"] }
+curve25519-dalek = { package = "curve25519-dalek-ng",  git = "https://github.com/stichtingorganism/curve25519-dalek-ng", version = "4", default-features = false, features = ["nightly", "u64_backend", "serde", "alloc"] }
 
 
 
