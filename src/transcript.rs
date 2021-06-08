@@ -155,7 +155,6 @@ impl Transcript {
         self.append_message(b"proto-name", label);
     }
     
-
 }
 
 

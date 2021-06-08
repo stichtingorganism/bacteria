@@ -10,15 +10,16 @@ edition = "2018"
 [dependencies]
 zeroize = { version = "1", features = ["zeroize_derive"] }
 rand = "0.8"
-subtle = "2"
+subtle = { git = "https://github.com/stichtingorganism/subtle-ng", version = "^2.2.1", default-features = false }
 rand_core = "0.6"
 byteorder = "1"
 
 [target.'cfg(any(target_feature = "avx2", target_feature = "avx"))'.dependencies]
-curve25519-dalek = { package = "curve25519-dalek-ng", version = "4", default-features = false, features = ["simd_backend", "nightly", "serde"] }
+curve25519-dalek = { package = "curve25519-dalek-ng", git = "https://github.com/stichtingorganism/curve25519-dalek-ng", version = "4", default-features = false, features = ["simd_backend", "nightly", "serde"] }
 
 [target.'cfg(not(any(target_feature = "avx2", target_feature = "avx")))'.dependencies]
-curve25519-dalek = { package = "curve25519-dalek-ng", version = "4", default-features = false, features = ["nightly", "u64_backend", "serde"] }
+curve25519-dalek = { package = "curve25519-dalek-ng",  git = "https://github.com/stichtingorganism/curve25519-dalek-ng", version = "4", default-features = false, features = ["nightly", "u64_backend", "serde"] }
+
 
 
 [dev-dependencies]
